@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steward — 隐私政策</title>
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0d14">
+<style>
+  :root {
+    --bg:        #0b0d14;
+    --ink:       #e9ebf5;
+    --muted:     #8c93ab;
+    --line:      rgba(255,255,255,.09);
+    --card:      rgba(255,255,255,.035);
+    --indigo:    #595cf5;
+    --violet:    #9f47ee;
+    --cyan:      #46d3e0;
+    --amber:     #f0a63c;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.78 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    /* 两团柔光：左上靛蓝、右下紫，和 app 图标同一套颜色 */
+    background-image:
+      radial-gradient(900px 620px at 8% -6%,  rgba(89,92,245,.26), transparent 62%),
+      radial-gradient(760px 560px at 102% 8%, rgba(159,71,238,.20), transparent 60%),
+      radial-gradient(700px 700px at 50% 118%, rgba(70,211,224,.10), transparent 62%);
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 72px 24px 110px; }
+
+  /* ── 页眉 ───────────────────────────────────────────── */
+  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 30px; }
+  .glyph {
+    width: 46px; height: 46px; flex: none; border-radius: 13px;
+    background: linear-gradient(145deg, #fff, #e8eaf4);
+    display: grid; place-items: center;
+    font: 700 19px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #2a2d44; letter-spacing: -1px;
+    box-shadow: 0 8px 26px rgba(89,92,245,.34), inset 0 0 0 1px rgba(255,255,255,.7);
+    position: relative;
+  }
+  .glyph::after {                     /* 图标右上角那枚星闪 */
+    content: ""; position: absolute; top: -5px; right: -5px;
+    width: 15px; height: 15px;
+    background: var(--indigo);
+    clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+    filter: drop-shadow(0 0 7px rgba(89,92,245,.85));
+  }
+  .brand-name { font-size: 15px; font-weight: 650; letter-spacing: .2px; }
+  .brand-sub  { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+  h1 {
+    font-size: clamp(32px, 6vw, 44px); line-height: 1.12;
+    letter-spacing: -1.2px; margin: 0 0 10px;
+    background: linear-gradient(96deg, #fff 8%, #b9bcff 46%, #d7a6ff 82%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tagline { color: var(--muted); margin: 0 0 6px; font-size: 16px; }
+  .updated {
+    color: var(--muted); font-size: 13px; margin: 0 0 40px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  /* ── 主张卡片 ───────────────────────────────────────── */
+  .lede {
+    position: relative; border-radius: 16px; padding: 24px 26px; margin-bottom: 14px;
+    background: linear-gradient(180deg, rgba(89,92,245,.16), rgba(159,71,238,.07));
+    border: 1px solid rgba(140,143,255,.30);
+    box-shadow: 0 16px 48px rgba(0,0,0,.42);
+  }
+  .lede-title {
+    font-size: 19px; font-weight: 700; letter-spacing: -.2px; margin-bottom: 7px;
+    background: linear-gradient(92deg, #fff, #c5c7ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede p { margin: 0; color: #cdd2e6; }
+
+  /* ── 章节 ───────────────────────────────────────────── */
+  h2 {
+    font-size: 20px; letter-spacing: -.3px; margin: 52px 0 14px;
+    display: flex; align-items: baseline; gap: 11px;
+  }
+  h2::before {
+    content: ">"; color: var(--indigo); font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    text-shadow: 0 0 14px rgba(89,92,245,.9);
+  }
+  p, li { color: #c6cbdf; }
+  ul { padding-left: 21px; }
+  li { margin: 8px 0; }
+  li::marker { color: var(--indigo); }
+  strong { color: #fff; }
+  a { color: #a6a9ff; text-decoration-color: rgba(166,169,255,.38); text-underline-offset: 3px; }
+  a:hover { color: #c9cbff; }
+  code {
+    background: rgba(255,255,255,.07); border: 1px solid var(--line);
+    padding: 2px 7px; border-radius: 6px; color: #d8c9ff;
+    font: 13.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  /* ── 表格 ───────────────────────────────────────────── */
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; overflow: hidden; margin: 16px 0;
+  }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 13px 18px; vertical-align: top; }
+  th {
+    color: var(--muted); font-weight: 600; font-size: 12.5px;
+    text-transform: uppercase; letter-spacing: .7px; white-space: nowrap;
+    background: rgba(255,255,255,.03);
+  }
+  tbody tr + tr td { border-top: 1px solid var(--line); }
+  td:first-child { color: #e2e6f4; }
+
+  /* ── 警示卡 ─────────────────────────────────────────── */
+  .warn {
+    border-radius: 14px; padding: 20px 22px; margin: 18px 0;
+    background: linear-gradient(180deg, rgba(240,160,60,.13), rgba(240,160,60,.05));
+    border: 1px solid rgba(240,170,80,.34);
+  }
+  .warn-title { color: #ffc478; font-weight: 700; margin-bottom: 6px; }
+  .warn p { margin: 0; color: #e8dcc9; }
+
+  .danger {
+    border-radius: 14px; padding: 20px 22px; margin: 18px 0;
+    background: linear-gradient(180deg, rgba(255,90,120,.12), rgba(255,90,120,.04));
+    border: 1px solid rgba(255,110,140,.32);
+  }
+  .danger p { margin: 0; color: #f3d7dd; }
+
+  /* ── 页脚 ───────────────────────────────────────────── */
+  footer {
+    margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 14px;
+  }
+  footer code { font-size: 12.5px; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 48px 18px 80px; }
+    th, td { padding: 11px 13px; }
+  }
+
+  .langs { display: flex; gap: 8px; margin-bottom: 26px; font-size: 13px; }
+  .langs a, .langs span {
+    padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line);
+    text-decoration: none; color: var(--muted); background: rgba(255,255,255,.03);
+  }
+  .langs span { color: #fff; border-color: rgba(140,143,255,.5);
+                background: linear-gradient(180deg, rgba(89,92,245,.30), rgba(159,71,238,.16)); }
+  .langs a:hover { color: #cdd0ff; border-color: rgba(140,143,255,.4); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <div class="glyph">&gt;_</div>
+    <div>
+      <div class="brand-name">Steward</div>
+      <div class="brand-sub">Claude Code from anywhere</div>
+    </div>
+  </div>
+
+  <div class="langs"><a href="privacy.html">English</a><span>简体中文</span><a href="privacy.ja.html">日本語</a></div>
+
+  <h1>隐私政策</h1>
+  <p class="tagline">从手机上的 Telegram 操作你 Mac 上的 Claude Code</p>
+  <p class="updated">最后更新：2026-09-23</p>
+
+  <div class="lede">
+    <div class="lede-title">Steward 不收集任何数据</div>
+    <p>没有埋点、没有分析 SDK、没有崩溃上报，也没有任何形式的回传。它唯一主动发起的网络请求是
+       Telegram Bot API —— 因为那就是它的工作。</p>
+  </div>
+
+  <h2>存在你本机上的东西</h2>
+  <p>以下内容保存在你自己的 Mac 上，Steward 不会把它们发送到任何地方：</p>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>内容</th><th>位置</th></tr></thead>
+      <tbody>
+        <tr><td>Telegram bot token</td><td><code>~/Library/Preferences/</code></td></tr>
+        <tr><td>允许的 Telegram user ID</td><td>同上</td></tr>
+        <tr><td>项目目录列表、当前项目</td><td>同上</td></tr>
+        <tr><td>工具白名单、权限超时设置</td><td>同上</td></tr>
+        <tr><td>每个项目最近一次的会话 ID</td><td>同上</td></tr>
+        <tr><td>运行日志</td><td><strong>仅内存</strong>，最多 1000 条，退出即消失，从不写入磁盘</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn">
+    <div class="warn-title">关于 bot token 的一点提醒</div>
+    <p>当前版本把它以明文形式存在偏好设置里（文件权限 <code>600</code>，只有你本人的账号可读，但内容未加密）。
+       这个 token 等同于你 Mac 的远程 shell 访问权限，请像对待密码一样对待它。怀疑泄漏时，去
+       <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 用 <code>/revoke</code> 作废并重新签发。</p>
+  </div>
+
+  <h2>会离开你 Mac 的东西</h2>
+  <p>Steward 是一座桥。它自己不存储、不分析、不转售任何消息内容，但消息确实会经过两个第三方：</p>
+  <ul>
+    <li><strong>Telegram</strong> —— 你和 bot 之间的所有消息都经由 Telegram 的服务器收发。适用
+      <a href="https://telegram.org/privacy" rel="noopener">Telegram 隐私政策</a>。</li>
+    <li><strong>Anthropic</strong> —— 你发给 Claude 的内容，由本机的 <code>claude</code> 进程送往 Anthropic。
+      这条链路由 Claude Code 自己管理，Steward 只是把你的文字交给它。适用
+      <a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic 隐私政策</a>。</li>
+  </ul>
+  <p>换句话说：Steward 没有服务器，也没有开发者能看到的后台。作者收不到你的任何数据。</p>
+
+  <h2>Steward 在你 Mac 上能做什么</h2>
+  <p>这一节不属于传统意义上的隐私政策，但比隐私政策更重要，所以写在这里。</p>
+  <p>Steward 以你的身份运行，且不在沙箱内。它能做的事和你坐在电脑前一样：读写文件、执行 shell 命令、访问网络。
+     这是它的功能，不是缺陷 —— 远程驱动 Claude Code 本身就需要这些权限。</p>
+
+  <div class="danger">
+    <p><strong>能给这个 bot 发消息的人，就能在你的 Mac 上执行任意命令。</strong>
+       唯一的防线是 Telegram user ID 白名单：不在列表里的账号，消息会被静默丢弃。</p>
+  </div>
+
+  <ul>
+    <li>默认情况下，Claude 每次要动手（改文件、跑命令）都会把请求推到你手机上等你确认。</li>
+    <li>只有白名单里的工具才跳过确认，而默认白名单只含只读操作
+        （<code>Read</code>、<code>Grep</code>、<code>Glob</code>、<code>TodoWrite</code>）。</li>
+    <li>5 分钟内没人回答的权限请求会自动拒绝，并通知你。</li>
+  </ul>
+
+  <h2>不涉及的内容</h2>
+  <ul>
+    <li>不收集个人身份信息</li>
+    <li>不使用 Cookie 或任何跟踪技术</li>
+    <li>不含广告，不与任何第三方共享数据</li>
+    <li>不面向 13 岁以下儿童</li>
+    <li>没有账号体系，无需注册</li>
+  </ul>
+
+  <h2>政策变更</h2>
+  <p>如果将来版本改变了数据处理方式（例如把 token 迁移到钥匙串、或增加可选的日志落盘），
+     本页会同步更新，并在发行说明中注明。</p>
+
+  <footer>
+    Steward 是开源软件，以上每一条都可以在源码中核实 —— 出站请求只存在于
+    <code>TelegramClient.swift</code>，日志实现见 <code>LogStore.swift</code>。<br>
+    有疑问请在项目仓库提 issue。
+  </footer>
+
+</div>
+</body>
+</html>
