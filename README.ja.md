@@ -2,31 +2,23 @@
 
 # Steward
 
-スマホの Telegram から、Mac 上の Claude Code を動かす。
+スマホの Telegram から、Mac 上の Claude Code を動かします。
 
-外出先でメッセージを送るだけで Claude が作業を始めます。ファイルを書き換えるような操作の前には、確認リクエストがスマホに届きます。
+外出先でメッセージを送ると Claude Code が Mac で作業し、確認が必要な操作はスマホに届きます。
 
----
+## 最初に読んでください
 
-## ⚠️ 最初に読んでください
+**Steward bot にメッセージを送れる人は、あなたの Mac でコマンドを実行できます。**
 
-**この bot にメッセージを送れる人は、あなたの Mac で任意のコマンドを実行できます。**
+Steward は macOS サンドボックス外で、あなたのユーザー権限として動作します。必ず非公開の Telegram bot と組み合わせ、bot token を秘密に保ち、Telegram ユーザー ID の許可リストを厳密に設定してください。
 
-Steward はあなたの権限で、サンドボックス外で動きます。キーボードの前に座っているあなたと同じことができるということです。唯一の防御線は **Telegram ユーザー ID の許可リスト**で、リストにないアカウントからのメッセージは黙って破棄されます。
-
-- bot token はパスワードと同じ扱いで管理してください。漏れたら [@BotFather](https://t.me/botfather) で `/revoke` して再発行します
-- 許可リストを空にしない、知らない人を追加しない
-- 現バージョンでは token はユーザー環境設定に平文で保存されます（暗号化なし）
-
----
+安全、プライバシー、セットアップ、使い方、制限事項の詳細は [Safety & Privacy ページ](privacy.ja.html) をご覧ください。
 
 ## 必要なもの
 
 - macOS 26.0 以降
-- [Claude Code](https://claude.com/claude-code)（インストール済み・ログイン済み）
-- Telegram の bot token と、自分のユーザー ID
-
-Steward はまず対話型 zsh で `claude` を探し、その後 `~/.local/bin`、`/opt/homebrew/bin`、`/usr/local/bin` にフォールバックします。それでも見つからない場合は設定画面でパスを指定できます。
+- [Claude Code](https://claude.com/claude-code)（インストール済み、ログイン済み）
+- Telegram bot token と自分の Telegram ユーザー ID
 
 ## インストール
 
@@ -36,96 +28,14 @@ brew install --cask steward
 
 または [Releases](../../releases) から DMG をダウンロードしてください。
 
-## セットアップ
+## クイックセットアップ
 
-1. [@BotFather](https://t.me/botfather) に `/newbot` を送り、token を取得
-2. [@userinfobot](https://t.me/userinfobot) に何か送って、自分の数値 ID を取得
-3. Steward を開く → **Connection** に token と ID を入力 → **Projects** でプロジェクトフォルダを追加
-4. **Connect** を押し、スマホから `/status` を送って確認
+1. [@BotFather](https://t.me/botfather) で bot を作成し、token をコピーします。
+2. [@userinfobot](https://t.me/userinfobot) で自分の数値 Telegram ユーザー ID を取得します。
+3. Steward を開き、token、許可するユーザー ID、プロジェクトフォルダを追加します。
+4. **Connect** を押し、Telegram から `/status` を送って確認します。
 
----
+## リンク
 
-## 使い方
-
-| 送るもの | 動作 |
-|---|---|
-| 普通のテキスト | Claude Code に渡される |
-| `!コマンド` | プロジェクトフォルダで shell を直接実行 |
-| `/project` | プロジェクト一覧を表示 |
-| `/project 名前` | プロジェクトを切り替え |
-| `/stop` `/status` `/help` | 停止 / 状態 / ヘルプ |
-
-**`!` で始めたコマンドは確認を経由しません。** 自分で明示的に打ったコマンドだからです。確認を挟みたい場合は `!` を付けず「swiftformat を走らせて」のように普通に頼んでください。
-
-セッションは継続します。別のプロジェクトに移って戻ってきても、アプリを再起動しても、`claude` が落ちて復帰しても、それまでの会話に接続されます。
-
-## 権限
-
-許可リストにないツールは、呼び出しのたびにスマホへ届きます：
-
-```
-🔐 Approval needed
-
-Bash
-rm -rf build/
-
-Reply: 1 allow / 0 deny / 2 always allow
-```
-
-`1`／`yes` で許可、`0`／`no` で拒否、`2`／`always` でそのセッション中は常に許可。**5 分間応答がなければ自動的に拒否**され、通知が届きます。
-
-デフォルトの許可リストは読み取り専用の操作だけです：`Read` `Grep` `Glob` `TodoWrite`。**Permissions** で変更できますが、**`Bash` は有効化に個別の確認が必要**です。このアプリを「無人の任意コード実行」に変えてしまう唯一のスイッチだからです。
-
-`Bash(rake swiftformat)` のような、より狭いルールも追加できます。**これらは書かれたまま Claude Code に渡され、Steward は一切検証しません。** どこまで広くマッチするかを決めるのは Claude Code なので、確信が持てないなら許可しないでください。
-
-## トラブルシューティング
-
-| 症状 | 対処 |
-|---|---|
-| Claude Code が見つからない | インストールするか、`which claude` の結果を設定画面に入力 |
-| 「開発元を確認できません」 | システム設定 → プライバシーとセキュリティ → このまま開く |
-| メッセージに反応しない | **Logs** タブを確認。受信メッセージ、ルーティング、権限リクエスト、終了コードがすべて記録されています |
-| token が無効 | 状態表示が無効になりポーリングを停止します。BotFather で確認してください |
-
----
-
-## プライバシー
-
-Steward は何も収集しません。計測なし、解析 SDK なし、クラッシュレポートなし。ログはメモリ上だけに存在します。自ら発信する通信は Telegram Bot API のみです。
-
-メッセージは Telegram を経由し、Claude に送った内容はローカルの `claude` プロセス経由で Anthropic に届きます。詳しくは[プライバシーポリシー](privacy.ja.html)をご覧ください。
-
-## 既知の制限
-
-- 同時に動くセッションは 1 つだけ（切り替えは可能、並行実行は不可）
-- Mac App Store では配布しません（サンドボックス内では自分で入れた `claude` を実行できないため）
-- スコープ付きルールのマッチ仕様は未検証
-- 自動アップデートなし
-
----
-
-## 仕組み
-
-```
-Telegram ──ロングポーリング──▶ Steward ──▶ claude -p --output-format stream-json
-                                 ▲
-                                 └──curl── PreToolUse hook（応答まで待機）
-```
-
-Claude Code の headless モードを子プロセスとして起動し、構造化イベントストリームでやり取りします。権限リクエストは PreToolUse hook を通ります。hook はブロックしたまま Steward のローカルエンドポイントに POST し、Steward がそれをスマホへ転送、あなたの回答が同じ経路で戻ります。
-
-**3 段のタイムアウトは厳密に増加**します。どれか 1 つだけを変えると保証が崩れます：
-
-```
-Steward の待ち時間 300s  <  hook の curl 570s  <  Claude が hook に与える上限 600s
-```
-
-Steward が最初にタイムアウトしなければなりません。そうすることで「拒否」は Steward が下してログに残した判断になり、失敗の理由を説明できないスクリプトがでっち上げた結果にはなりません。
-
-**あらゆる失敗は「拒否」側に倒します。** hook が Steward に到達できない、応答が壊れている、標準入力が閉じない——どの経路も明示的な拒否を出力して正常終了します。あなたはスマホの前にいるからです。誤った拒否はやり直せますが、永久にハングした状態は診断できません。
-
----
-
-## License
-
-Apache License 2.0。詳しくは [LICENSE](LICENSE) を参照してください。
+- [Safety & Privacy](privacy.ja.html)
+- [License](LICENSE)

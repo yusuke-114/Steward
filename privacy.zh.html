@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Steward — 隐私政策</title>
+<title>Steward — 安全与隐私</title>
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b0d14">
 <style>
@@ -171,7 +171,7 @@
 
   <div class="langs"><a href="privacy.html">English</a><span>简体中文</span><a href="privacy.ja.html">日本語</a></div>
 
-  <h1>隐私政策</h1>
+  <h1>安全与隐私</h1>
   <p class="tagline">从手机上的 Telegram 操作你 Mac 上的 Claude Code</p>
   <p class="updated">最后更新：2026-09-23</p>
 
@@ -180,6 +180,8 @@
     <p>没有埋点、没有分析 SDK、没有崩溃上报，也没有任何形式的回传。它唯一主动发起的网络请求是
        Telegram Bot API —— 因为那就是它的工作。</p>
   </div>
+
+  <p>这也是 Steward 的实用说明页。这里说明 app 能做什么、哪些内容会离开你的 Mac，以及在让手机消息控制桌面之前需要确认什么。</p>
 
   <h2>存在你本机上的东西</h2>
   <p>以下内容保存在你自己的 Mac 上，Steward 不会把它们发送到任何地方：</p>
@@ -233,6 +235,62 @@
     <li>5 分钟内没人回答的权限请求会自动拒绝，并通知你。</li>
   </ul>
 
+  <h2>需求与配置</h2>
+  <ul>
+    <li>macOS 26.0 或更高版本</li>
+    <li><a href="https://claude.com/claude-code" rel="noopener">Claude Code</a> 已安装并登录</li>
+    <li>从 <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 获取的 Telegram bot token</li>
+    <li>从 <a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a> 获取的数字 Telegram user ID</li>
+  </ul>
+  <p>可以用 <code>brew install --cask steward</code> 安装，或从项目 releases 下载 DMG。打开 Steward，填入
+     token 和 user ID，添加项目目录，点击 <strong>Connect</strong>，然后从 Telegram 发送 <code>/status</code> 验证。</p>
+  <p>Steward 会先通过你的交互式 zsh 查找 <code>claude</code>，再回退到 <code>~/.local/bin</code>、
+     <code>/opt/homebrew/bin</code> 和 <code>/usr/local/bin</code>。如果仍然找不到，可以在设置里手动指定路径。</p>
+
+  <h2>怎么用</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>发送</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr><td>任意文字</td><td>交给 Claude Code</td></tr>
+        <tr><td><code>!命令</code></td><td>直接在项目目录执行 shell 命令</td></tr>
+        <tr><td><code>/project</code></td><td>列出项目</td></tr>
+        <tr><td><code>/project 名字</code></td><td>切换项目</td></tr>
+        <tr><td><code>/stop</code> <code>/status</code> <code>/help</code></td><td>停止、状态和帮助</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><code>!</code> 前缀会跳过确认，因为它被视为你明确输入的命令。如果想保留确认步骤，就不要加 <code>!</code>，正常描述需求即可。</p>
+  <p>会话是连续的：切换项目、重启 app、或从 <code>claude</code> 崩溃中恢复后，都会接回最近一次会话。</p>
+
+  <h2>分发与限制</h2>
+  <ul>
+    <li>Steward 在 Mac App Store 外分发，因为 macOS 沙箱无法按这个 app 需要的方式运行用户自己安装的 <code>claude</code> 命令。</li>
+    <li>同一时刻只有一个活跃会话。可以切换项目，但不能并行运行多个项目。</li>
+    <li>细粒度规则如 <code>Bash(rake swiftformat)</code> 会原样传给 Claude Code。Steward 不校验它到底匹配多宽。</li>
+    <li>当前版本没有自动更新。</li>
+  </ul>
+
+  <h2>排查</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>问题</th><th>处理方式</th></tr></thead>
+      <tbody>
+        <tr><td>找不到 Claude Code</td><td>安装它，或把 <code>which claude</code> 的输出填到设置里</td></tr>
+        <tr><td>无法验证开发者</td><td>打开系统设置，进入隐私与安全性，然后选择仍要打开</td></tr>
+        <tr><td>bot 没反应</td><td>查看 Logs 栏，里面有消息、路由、权限请求和退出码</td></tr>
+        <tr><td>Token 无效</td><td>Steward 会停止轮询并显示 token 无效；去 BotFather 确认 token</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>权限确认如何工作</h2>
+  <p>Claude Code 的 headless 模式作为子进程运行，并通过结构化事件流通信。权限请求走 PreToolUse hook：
+     hook 会阻塞并把请求 POST 到 Steward 的本地端点，Steward 推送到你的手机，你的回答再沿同一路径返回。</p>
+  <p>超时顺序是刻意设计的：Steward 等你回答 300 秒，hook 的 curl 等 570 秒，Claude 给 hook 的上限是 600 秒。
+     Steward 必须最先超时，这样「拒绝」才是由它作出并记录的判断。</p>
+  <p>所有失败都倒向拒绝。如果 hook 联系不上 Steward、响应损坏、或标准输入没有关闭，请求会被拒绝，而不是无限挂住。</p>
+
   <h2>不涉及的内容</h2>
   <ul>
     <li>不收集个人身份信息</li>
@@ -247,7 +305,7 @@
      本页会同步更新，并在发行说明中注明。</p>
 
   <footer>
-    以上说明对应当前 app 实现：Steward 没有埋点、遥测、崩溃上报、服务器组件或日志文件。<br>
+    以上说明对应当前 app 实现和分发方式：Steward 没有埋点、遥测、崩溃上报、服务器组件或日志文件。<br>
     有疑问请在项目仓库提 issue。
   </footer>
 

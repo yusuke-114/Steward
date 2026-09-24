@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Steward — プライバシーポリシー</title>
+<title>Steward — Safety & Privacy</title>
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b0d14">
 <style>
@@ -170,7 +170,7 @@
 
   <div class="langs"><a href="privacy.html">English</a><a href="privacy.zh.html">简体中文</a><span>日本語</span></div>
 
-  <h1>プライバシーポリシー</h1>
+  <h1>Safety & Privacy</h1>
   <p class="tagline">スマホの Telegram から、Mac 上の Claude Code を動かす</p>
   <p class="updated">最終更新：2026-09-23</p>
 
@@ -179,6 +179,9 @@
     <p>計測なし、解析 SDK なし、クラッシュレポートなし、いかなる形の送信もありません。
        自ら発信する通信は Telegram Bot API のみ — それがこのアプリの仕事だからです。</p>
   </div>
+
+  <p>このページは Steward の実用ガイドでもあります。アプリが何をできるのか、何が Mac の外に出るのか、
+     スマホからデスクトップを操作する前に何を確認すべきかを説明します。</p>
 
   <h2>Mac の中に留まるもの</h2>
   <p>以下はあなた自身のマシンに保存され、Steward がどこかに送ることはありません：</p>
@@ -234,6 +237,70 @@
     <li>5 分間誰も応答しなかったリクエストは自動的に拒否され、通知が届きます。</li>
   </ul>
 
+  <h2>必要条件とセットアップ</h2>
+  <ul>
+    <li>macOS 26.0 以降</li>
+    <li><a href="https://claude.com/claude-code" rel="noopener">Claude Code</a>（インストール済み、ログイン済み）</li>
+    <li><a href="https://t.me/botfather" rel="noopener">@BotFather</a> で取得した Telegram bot token</li>
+    <li><a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a> で取得した数値 Telegram ユーザー ID</li>
+  </ul>
+  <p><code>brew install --cask steward</code> でインストールするか、プロジェクトの releases から DMG をダウンロードします。
+     Steward を開き、token とユーザー ID を入力し、プロジェクトフォルダを追加して <strong>Connect</strong> を押します。
+     その後 Telegram から <code>/status</code> を送って確認してください。</p>
+  <p>Steward はまず対話型 zsh で <code>claude</code> を探し、その後 <code>~/.local/bin</code>、
+     <code>/opt/homebrew/bin</code>、<code>/usr/local/bin</code> にフォールバックします。それでも見つからない場合は
+     Settings でパスを指定できます。</p>
+
+  <h2>使い方</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>送るもの</th><th>動作</th></tr></thead>
+      <tbody>
+        <tr><td>普通のテキスト</td><td>Claude Code に渡される</td></tr>
+        <tr><td><code>!コマンド</code></td><td>プロジェクトフォルダで shell コマンドを直接実行</td></tr>
+        <tr><td><code>/project</code></td><td>プロジェクト一覧を表示</td></tr>
+        <tr><td><code>/project 名前</code></td><td>プロジェクトを切り替え</td></tr>
+        <tr><td><code>/stop</code> <code>/status</code> <code>/help</code></td><td>停止、状態、ヘルプ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><code>!</code> で始まる入力は、自分で明示的に打ったコマンドとして扱われるため確認を省略します。
+     確認を挟みたい場合は <code>!</code> を付けず、普通に依頼してください。</p>
+  <p>セッションは継続します。プロジェクトを切り替えても、アプリを再起動しても、<code>claude</code> が落ちて復帰しても、
+     直近のセッションに接続されます。</p>
+
+  <h2>配布と制限事項</h2>
+  <ul>
+    <li>Steward は Mac App Store 外で配布されます。macOS サンドボックスでは、このアプリが必要とする形で
+        ユーザーがインストールした <code>claude</code> コマンドを実行できないためです。</li>
+    <li>同時に動くセッションは 1 つだけです。プロジェクトの切り替えはできますが、複数プロジェクトの並行実行はできません。</li>
+    <li><code>Bash(rake swiftformat)</code> のようなスコープ付きルールは、そのまま Claude Code に渡されます。
+        Steward はマッチ範囲を検証しません。</li>
+    <li>このバージョンには自動アップデートはありません。</li>
+  </ul>
+
+  <h2>トラブルシューティング</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>症状</th><th>対処</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code が見つからない</td><td>インストールするか、<code>which claude</code> の結果を Settings に入力</td></tr>
+        <tr><td>開発元を確認できない</td><td>システム設定のプライバシーとセキュリティから、このまま開くを選択</td></tr>
+        <tr><td>bot が反応しない</td><td>Logs タブでメッセージ、ルーティング、承認リクエスト、終了コードを確認</td></tr>
+        <tr><td>token が無効</td><td>Steward はポーリングを停止し、token 無効の状態を表示します。BotFather で確認してください</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>承認の仕組み</h2>
+  <p>Claude Code の headless モードは子プロセスとして動き、構造化イベントストリームで通信します。
+     承認リクエストは PreToolUse hook を通ります。hook はブロックしたまま Steward のローカルエンドポイントへ POST し、
+     Steward がスマホへ転送し、あなたの回答が同じ経路で戻ります。</p>
+  <p>タイムアウトの順序は意図的です。Steward は 300 秒、hook の curl は 570 秒、Claude の hook タイムアウトは 600 秒です。
+     Steward が最初にタイムアウトすることで、「拒否」は Steward が判断してログに残した結果になります。</p>
+  <p>あらゆる失敗は拒否側に倒します。hook が Steward に到達できない、応答が壊れている、標準入力が閉じない場合でも、
+     リクエストは無期限に止まらず拒否されます。</p>
+
   <h2>該当しないもの</h2>
   <ul>
     <li>個人を特定できる情報は収集しません</li>
@@ -248,7 +315,7 @@
      このページを更新し、リリースノートに明記します。</p>
 
   <footer>
-    上記は現在の app 実装を説明したものです。Steward には解析、テレメトリ、クラッシュレポート、
+    上記は現在の app 実装と配布方針を説明したものです。Steward には解析、テレメトリ、クラッシュレポート、
     サーバーコンポーネント、ログファイルはありません。<br>
     ご質問はプロジェクトのリポジトリで issue を立ててください。
   </footer>

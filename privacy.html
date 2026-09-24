@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Steward — Privacy Policy</title>
+<title>Steward — Safety & Privacy</title>
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b0d14">
 <style>
@@ -170,7 +170,7 @@
 
   <div class="langs"><span>English</span><a href="privacy.zh.html">简体中文</a><a href="privacy.ja.html">日本語</a></div>
 
-  <h1>Privacy Policy</h1>
+  <h1>Safety & Privacy</h1>
   <p class="tagline">Drive Claude Code on your Mac from Telegram on your phone</p>
   <p class="updated">Last updated: 2026-09-23</p>
 
@@ -179,6 +179,9 @@
     <p>No analytics, no telemetry, no crash reporting, no phoning home of any kind. The only
        outbound request it initiates is to the Telegram Bot API — because that is its job.</p>
   </div>
+
+  <p>This page is also the practical user guide for Steward. It explains what the app can do,
+     what leaves your Mac, and what to check before you let a phone message control a desktop.</p>
 
   <h2>What stays on your Mac</h2>
   <p>The following is stored on your own machine. Steward never sends any of it anywhere:</p>
@@ -239,6 +242,72 @@
     <li>A request nobody answers within 5 minutes is auto-denied, and you are told.</li>
   </ul>
 
+  <h2>Requirements and setup</h2>
+  <ul>
+    <li>macOS 26.0 or later</li>
+    <li><a href="https://claude.com/claude-code" rel="noopener">Claude Code</a>, installed and signed in</li>
+    <li>A Telegram bot token from <a href="https://t.me/botfather" rel="noopener">@BotFather</a></li>
+    <li>Your numeric Telegram user ID from <a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a></li>
+  </ul>
+  <p>Install with <code>brew install --cask steward</code> or download the DMG from the project
+     releases. Open Steward, paste the token and user ID, add a project folder, press
+     <strong>Connect</strong>, then send <code>/status</code> from Telegram.</p>
+  <p>Steward first asks your interactive zsh for <code>claude</code>, then falls back to
+     <code>~/.local/bin</code>, <code>/opt/homebrew/bin</code> and <code>/usr/local/bin</code>.
+     If it still cannot find Claude Code, set the path in Settings.</p>
+
+  <h2>How to use it</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Send</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Any text</td><td>Goes to Claude Code</td></tr>
+        <tr><td><code>!command</code></td><td>Runs a shell command directly in the project folder</td></tr>
+        <tr><td><code>/project</code></td><td>Lists your projects</td></tr>
+        <tr><td><code>/project name</code></td><td>Switches project</td></tr>
+        <tr><td><code>/stop</code> <code>/status</code> <code>/help</code></td><td>Stop, status and help</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The <code>!</code> prefix skips approval because it is treated as a command you typed
+     deliberately. If you want the approval step, ask normally instead.</p>
+  <p>Sessions are continuous: switch projects, restart the app, or recover from a
+     <code>claude</code> crash, and the conversation resumes from the last known session.</p>
+
+  <h2>Distribution and limitations</h2>
+  <ul>
+    <li>Steward is distributed outside the Mac App Store because the macOS sandbox cannot run a
+        user-installed <code>claude</code> command in the way this app needs.</li>
+    <li>One active session runs at a time. You can switch projects, but not run multiple projects in parallel.</li>
+    <li>Scoped rule matching, such as <code>Bash(rake swiftformat)</code>, is passed to Claude Code
+        as written. Steward does not validate how broad the match is.</li>
+    <li>There is no automatic updater in this version.</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Claude Code not found</td><td>Install it, or paste the output of <code>which claude</code> into Settings</td></tr>
+        <tr><td>Developer cannot be verified</td><td>Open System Settings, Privacy & Security, then choose Open Anyway</td></tr>
+        <tr><td>No response from the bot</td><td>Check the Logs tab for messages, routes, approvals and exit codes</td></tr>
+        <tr><td>Invalid token</td><td>Steward stops polling and shows the invalid-token status; verify it with BotFather</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How approvals work</h2>
+  <p>Claude Code's headless mode runs as a subprocess and speaks a structured event stream.
+     Approvals go through a PreToolUse hook: the hook blocks while POSTing the request to
+     Steward's local endpoint, Steward pushes it to your phone, and your answer travels back
+     the same way.</p>
+  <p>The timeout order is deliberate: Steward waits for you for 300 seconds, the hook's curl
+     waits for 570 seconds, and Claude's hook timeout is 600 seconds. Steward has to time out
+     first, so that a denial is a decision it made and logged.</p>
+  <p>Every failure falls toward denial. If the hook cannot reach Steward, the response is
+     corrupt, or stdin never closes, the request is denied instead of hanging indefinitely.</p>
+
   <h2>What this does not involve</h2>
   <ul>
     <li>No personally identifiable information is collected</li>
@@ -253,7 +322,7 @@
      optional log files), this page will be updated and the change noted in the release notes.</p>
 
   <footer>
-    These claims describe the current app implementation: Steward has no analytics, telemetry,
+    These claims describe the current app implementation and distribution notes: Steward has no analytics, telemetry,
     crash reporting, server component, or log files.<br>
     Questions: open an issue on the project repository.
   </footer>
