@@ -199,8 +199,8 @@
 
   <div class="warn">
     <div class="warn-title">A note about the bot token</div>
-    <p>This version stores it in plain text in preferences (file mode <code>600</code>, readable only
-       by your account, but not encrypted). That token is equivalent to remote shell access to your
+    <p>This version stores it in plain text in your user preferences, readable by your macOS
+       account but not encrypted. That token is equivalent to remote shell access to your
        Mac — treat it like a password. If you suspect it leaked, revoke and reissue it with
        <code>/revoke</code> at <a href="https://t.me/botfather" rel="noopener">@BotFather</a>.</p>
   </div>
@@ -253,9 +253,8 @@
      optional log files), this page will be updated and the change noted in the release notes.</p>
 
   <footer>
-    Steward is open source, and every claim above can be verified in the code — outbound requests
-    exist only in <code>TelegramClient.swift</code>, and the logging implementation is in
-    <code>LogStore.swift</code>.<br>
+    These claims describe the current app implementation: Steward has no analytics, telemetry,
+    crash reporting, server component, or log files.<br>
     Questions: open an issue on the project repository.
   </footer>
 

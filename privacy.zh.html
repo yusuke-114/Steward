@@ -200,7 +200,7 @@
 
   <div class="warn">
     <div class="warn-title">关于 bot token 的一点提醒</div>
-    <p>当前版本把它以明文形式存在偏好设置里（文件权限 <code>600</code>，只有你本人的账号可读，但内容未加密）。
+    <p>当前版本把它以明文形式存在你的用户偏好设置里，可由你的 macOS 账号读取，内容未加密。
        这个 token 等同于你 Mac 的远程 shell 访问权限，请像对待密码一样对待它。怀疑泄漏时，去
        <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 用 <code>/revoke</code> 作废并重新签发。</p>
   </div>
@@ -247,8 +247,7 @@
      本页会同步更新，并在发行说明中注明。</p>
 
   <footer>
-    Steward 是开源软件，以上每一条都可以在源码中核实 —— 出站请求只存在于
-    <code>TelegramClient.swift</code>，日志实现见 <code>LogStore.swift</code>。<br>
+    以上说明对应当前 app 实现：Steward 没有埋点、遥测、崩溃上报、服务器组件或日志文件。<br>
     有疑问请在项目仓库提 issue。
   </footer>
 

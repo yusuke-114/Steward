@@ -16,7 +16,7 @@ Steward はあなたの権限で、サンドボックス外で動きます。キ
 
 - bot token はパスワードと同じ扱いで管理してください。漏れたら [@BotFather](https://t.me/botfather) で `/revoke` して再発行します
 - 許可リストを空にしない、知らない人を追加しない
-- 現バージョンでは token は `~/Library/Preferences/` に平文で保存されます（パーミッション 600、暗号化なし）
+- 現バージョンでは token はユーザー環境設定に平文で保存されます（暗号化なし）
 
 ---
 
@@ -26,7 +26,7 @@ Steward はあなたの権限で、サンドボックス外で動きます。キ
 - [Claude Code](https://claude.com/claude-code)（インストール済み・ログイン済み）
 - Telegram の bot token と、自分のユーザー ID
 
-Steward は `~/.local/bin`、`/opt/homebrew/bin`、`/usr/local/bin` から `claude` を自動で探します。見つからない場合は設定画面でパスを指定できます。
+Steward はまず対話型 zsh で `claude` を探し、その後 `~/.local/bin`、`/opt/homebrew/bin`、`/usr/local/bin` にフォールバックします。それでも見つからない場合は設定画面でパスを指定できます。
 
 ## インストール
 

@@ -199,8 +199,8 @@
 
   <div class="warn">
     <div class="warn-title">bot token について</div>
-    <p>現バージョンでは環境設定に平文で保存されます（パーミッション <code>600</code>、本人のアカウントのみ読み取り可、
-       ただし暗号化はされていません）。この token はあなたの Mac へのリモート shell アクセスと同等です。
+    <p>現バージョンではユーザー環境設定に平文で保存され、あなたの macOS アカウントから読み取れますが、
+       暗号化はされていません。この token はあなたの Mac へのリモート shell アクセスと同等です。
        パスワードと同じ扱いをしてください。漏洩が疑われる場合は
        <a href="https://t.me/botfather" rel="noopener">@BotFather</a> で <code>/revoke</code> して再発行します。</p>
   </div>
@@ -248,8 +248,8 @@
      このページを更新し、リリースノートに明記します。</p>
 
   <footer>
-    Steward はオープンソースです。上記のすべてはコードで検証できます —
-    外部通信は <code>TelegramClient.swift</code> にのみ存在し、ログの実装は <code>LogStore.swift</code> にあります。<br>
+    上記は現在の app 実装を説明したものです。Steward には解析、テレメトリ、クラッシュレポート、
+    サーバーコンポーネント、ログファイルはありません。<br>
     ご質問はプロジェクトのリポジトリで issue を立ててください。
   </footer>
 
