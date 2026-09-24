@@ -16,7 +16,7 @@ Steward 以你的身份运行、不在沙箱里，能做的事和你坐在电脑
 
 - bot token 要当密码保管。泄漏了去 [@BotFather](https://t.me/botfather) 用 `/revoke` 作废重发
 - 别把白名单留空，也别加不认识的人
-- 当前版本 token 明文存在 `~/Library/Preferences/`（权限 600，未加密）
+- 当前版本 token 明文存在你的用户偏好设置里，未加密
 
 ---
 
@@ -26,7 +26,7 @@ Steward 以你的身份运行、不在沙箱里，能做的事和你坐在电脑
 - [Claude Code](https://claude.com/claude-code) 已安装并登录
 - 一个 Telegram bot token + 你自己的 user ID
 
-Steward 会自动在 `~/.local/bin`、`/opt/homebrew/bin`、`/usr/local/bin` 里找 `claude`，找不到可以在设置里手填路径。
+Steward 会先通过你的交互式 zsh 查找 `claude`，再回退到 `~/.local/bin`、`/opt/homebrew/bin`、`/usr/local/bin`。如果仍然找不到，可以在设置里手填路径。
 
 ## 安装
 

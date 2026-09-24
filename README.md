@@ -16,7 +16,7 @@ Steward runs as you, outside the sandbox — it can do whatever you could do sit
 
 - Treat the bot token like a password. If it leaks, revoke it with `/revoke` at [@BotFather](https://t.me/botfather)
 - Never leave the allow list empty, and never add someone you don't know
-- In this version the token is stored in plain text under `~/Library/Preferences/` (mode 600, not encrypted)
+- In this version the token is stored in plain text in your user preferences, not encrypted
 
 ---
 
@@ -26,7 +26,7 @@ Steward runs as you, outside the sandbox — it can do whatever you could do sit
 - [Claude Code](https://claude.com/claude-code), installed and signed in
 - A Telegram bot token and your own user ID
 
-Steward looks for `claude` in `~/.local/bin`, `/opt/homebrew/bin` and `/usr/local/bin`. If it isn't there, set the path in Settings.
+Steward first asks your interactive zsh for `claude`, then falls back to `~/.local/bin`, `/opt/homebrew/bin` and `/usr/local/bin`. If it still can't find Claude Code, set the path in Settings.
 
 ## Install
 
