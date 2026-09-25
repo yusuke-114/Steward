@@ -26,6 +26,10 @@ Steward 不在 macOS 沙箱内运行，并以你的用户身份行动。只应�
 - [Claude Code](https://claude.com/claude-code) 已安装并登录
 - 一个 Telegram bot token 和你自己的 Telegram user ID
 
+## 已知问题
+
+Steward 1.0 目前不兼容 Claude Code 2.1.144。如果连接后立刻显示 `Claude session exited (1)`，请等待 Steward 更新后再配合这个 Claude Code 版本使用。
+
 ## 安装
 
 ```bash

@@ -26,6 +26,10 @@ Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Pr
 - [Claude Code](https://claude.com/claude-code), installed and signed in
 - A Telegram bot token and your own Telegram user ID
 
+## Known Issue
+
+Steward 1.0 is currently incompatible with Claude Code 2.1.144. If the app shows `Claude session exited (1)` immediately after connecting, wait for a Steward update before using it with that Claude Code version.
+
 ## Install
 
 ```bash
