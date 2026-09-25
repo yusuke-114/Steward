@@ -1,10 +1,16 @@
 **English** · [简体中文](README.zh.md) · [日本語](README.ja.md)
 
+<p align="center">
+  <img src="docs/assets/steward-icon.png" alt="Steward icon" width="96">
+</p>
+
 # Steward
 
 Drive Claude Code on your Mac from Telegram on your phone.
 
 You send a message while away from your desk; Claude Code works on the Mac; approval requests land back on your phone.
+
+![Steward connection settings](docs/assets/steward-screenshot.png)
 
 ## Read First
 

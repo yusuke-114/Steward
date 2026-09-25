@@ -1,10 +1,16 @@
 [English](README.md) · [简体中文](README.zh.md) · **日本語**
 
+<p align="center">
+  <img src="docs/assets/steward-icon.png" alt="Steward icon" width="96">
+</p>
+
 # Steward
 
 スマホの Telegram から、Mac 上の Claude Code を動かします。
 
 外出先でメッセージを送ると Claude Code が Mac で作業し、確認が必要な操作はスマホに届きます。
+
+![Steward 接続設定](docs/assets/steward-screenshot.png)
 
 ## 最初に読んでください
 

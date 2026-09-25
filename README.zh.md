@@ -1,10 +1,16 @@
 [English](README.md) · **简体中文** · [日本語](README.ja.md)
 
+<p align="center">
+  <img src="docs/assets/steward-icon.png" alt="Steward icon" width="96">
+</p>
+
 # Steward
 
 从手机上的 Telegram 操作你 Mac 上的 Claude Code。
 
 人在外面发一条消息，Claude Code 在 Mac 上工作；需要确认的操作会推回你的手机。
+
+![Steward 连接设置](docs/assets/steward-screenshot.png)
 
 ## 先读
 
