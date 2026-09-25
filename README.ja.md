@@ -26,10 +26,6 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 - [Claude Code](https://claude.com/claude-code)（インストール済み、ログイン済み）
 - Telegram bot token と自分の Telegram ユーザー ID
 
-## 既知の問題
-
-Steward 1.0 は現在 Claude Code 2.1.144 と互換性がありません。接続直後に `Claude session exited (1)` と表示される場合は、この Claude Code バージョンで使う前に Steward の更新をお待ちください。
-
 ## インストール
 
 ```bash
