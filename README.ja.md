@@ -23,10 +23,16 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 ## インストール
 
 ```bash
-brew install --cask steward
+brew install --cask yusuke-114/tap/steward
 ```
 
-または [Releases](../../releases) から DMG をダウンロードしてください。
+アンインストール:
+
+```bash
+brew uninstall --cask steward
+```
+
+または [Releases](../../releases) から ZIP をダウンロードしてください。
 
 ## クイックセットアップ
 

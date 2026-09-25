@@ -23,10 +23,16 @@ Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Pr
 ## Install
 
 ```bash
-brew install --cask steward
+brew install --cask yusuke-114/tap/steward
 ```
 
-Or download the DMG from [Releases](../../releases).
+To uninstall:
+
+```bash
+brew uninstall --cask steward
+```
+
+Or download the ZIP from [Releases](../../releases).
 
 ## Quick Setup
 

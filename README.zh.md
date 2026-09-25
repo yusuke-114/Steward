@@ -23,10 +23,16 @@ Steward 不在 macOS 沙箱内运行，并以你的用户身份行动。只应�
 ## 安装
 
 ```bash
-brew install --cask steward
+brew install --cask yusuke-114/tap/steward
 ```
 
-或从 [Releases](../../releases) 下载 DMG。
+卸载：
+
+```bash
+brew uninstall --cask steward
+```
+
+或从 [Releases](../../releases) 下载 ZIP。
 
 ## 快速配置
 
