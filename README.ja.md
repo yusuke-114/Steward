@@ -24,12 +24,10 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 
 | | Steward | [Remote Control](https://code.claude.com/docs/en/remote-control) | [Dispatch](https://claude.com/docs/cowork/guide/dispatch) |
 |---|---|---|---|
-| Claude Code のログイン方法 | **問わない**：サブスクリプション、API キー、Bedrock、Vertex AI、社内ゲートウェイ | claude.ai サブスクリプションのみ | Pro / Max のみ |
+| 任意のログイン方法（API キー、Bedrock、Vertex AI、社内ゲートウェイ） | ✅ | ❌ claude.ai サブスクリプションのみ | ❌ Pro / Max のみ |
 | スマートフォンから新規セッション | ✅ | ❌ Mac で開いたセッションの続きのみ | ✅ |
 | スマートフォンからプロジェクト切り替え | ✅ `/project` | ❌ | ✅ |
-| シェルコマンドを直接実行 | ✅ `!git status` | Claude 経由 | Claude 経由 |
-| スマートフォン側 | Telegram | Claude アプリ / ブラウザ | Claude アプリ |
-| Mac 側で動くもの | メニューバーアプリ | CLI、デスクトップアプリ、VS Code | Claude デスクトップアプリ |
+| シェルコマンドを直接実行 | ✅ `!git status` | ❌ Claude 経由 | ❌ Claude 経由 |
 
 Steward は Claude の認証情報に触れず、`claude` の既存のログインをそのまま使います。
 

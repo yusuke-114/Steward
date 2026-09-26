@@ -24,12 +24,10 @@ Steward 不在 macOS 沙箱内运行，并以你的用户身份行动。只应�
 
 | | Steward | [Remote Control](https://code.claude.com/docs/en/remote-control) | [Dispatch](https://claude.com/docs/cowork/guide/dispatch) |
 |---|---|---|---|
-| Claude Code 登录方式 | **不限**：订阅、API key、Bedrock、Vertex AI、公司网关 | 仅 claude.ai 订阅 | 仅 Pro / Max |
+| 支持任意登录方式（API key、Bedrock、Vertex AI、公司网关） | ✅ | ❌ 仅 claude.ai 订阅 | ❌ 仅 Pro / Max |
 | 手机上开新会话 | ✅ | ❌ 只能接着用 Mac 上已开的会话 | ✅ |
 | 手机上切换项目 | ✅ `/project` | ❌ | ✅ |
-| 直接执行 shell 命令 | ✅ `!git status` | 需经 Claude | 需经 Claude |
-| 手机端 | Telegram | Claude app / 浏览器 | Claude app |
-| Mac 上运行 | 菜单栏 app | CLI、桌面 app 或 VS Code | Claude 桌面 app |
+| 直接执行 shell 命令 | ✅ `!git status` | ❌ 需经 Claude | ❌ 需经 Claude |
 
 Steward 不接触 Claude 的登录凭据，直接沿用 `claude` 现有的登录。
 
