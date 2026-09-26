@@ -20,6 +20,15 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 
 安全、プライバシー、セットアップ、使い方、制限事項の詳細は [Safety & Privacy ページ](privacy.ja.html) をご覧ください。
 
+## Steward と Remote Control
+
+claude.ai のサブスクリプションなら、公式の [Remote Control](https://code.claude.com/docs/en/remote-control) と [Dispatch](https://claude.com/docs/cowork/guide/dispatch) が手軽です。次の用途には Steward が向いています。
+
+- **ログイン方法を問わない**：API キー、Amazon Bedrock、Google Vertex AI、社内ゲートウェイに対応。Claude の認証情報には触れず、`claude` の既存のログインをそのまま使います。
+- **スマートフォンから新規セッション**：Mac に戻らずに、セッションの開始やプロジェクトの切り替えができます。
+- **シェルコマンドを直接実行**：`!git status` は Claude を介さず、そのまま実行されます。
+- **Telegram で操作**：ターミナルやデスクトップアプリを開いたままにする必要はありません。
+
 ## 必要なもの
 
 - macOS 26.0 以降

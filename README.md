@@ -20,6 +20,15 @@ Steward runs outside the macOS sandbox and acts as your user account. Use it onl
 
 Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Privacy page](privacy.html).
 
+## Steward vs. Remote Control
+
+On a claude.ai subscription, Anthropic's official [Remote Control](https://code.claude.com/docs/en/remote-control) and [Dispatch](https://claude.com/docs/cowork/guide/dispatch) are the easier option. Choose Steward if you need:
+
+- **Any Claude Code login.** API key, Amazon Bedrock, Google Vertex AI, or a company gateway. Steward never touches your Claude credentials; it runs `claude` as it is already signed in.
+- **New sessions from your phone.** Start a session or switch projects without going back to the Mac.
+- **Direct shell commands.** `!git status` runs as-is, without going through Claude.
+- **Telegram as the client.** No terminal or desktop app to keep open.
+
 ## Requirements
 
 - macOS 26.0+
