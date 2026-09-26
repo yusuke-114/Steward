@@ -20,14 +20,21 @@ Steward runs outside the macOS sandbox and acts as your user account. Use it onl
 
 Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Privacy page](privacy.html).
 
-## Steward vs. Remote Control
+## Steward vs. Remote Control and Dispatch
 
-On a claude.ai subscription, Anthropic's official [Remote Control](https://code.claude.com/docs/en/remote-control) and [Dispatch](https://claude.com/docs/cowork/guide/dispatch) are the easier option. Choose Steward if you need:
+| | Steward | [Remote Control](https://code.claude.com/docs/en/remote-control) | [Dispatch](https://claude.com/docs/cowork/guide/dispatch) |
+|---|---|---|---|
+| Claude Code login | **Any**: subscription, API key, Bedrock, Vertex AI, company gateway | claude.ai subscription only | Pro / Max only |
+| Start a new session from your phone | ✅ | ❌ Continues a session opened on the Mac | ✅ |
+| Switch projects from your phone | ✅ `/project` | ❌ | ✅ |
+| Run shell commands directly | ✅ `!git status` | Through Claude | Through Claude |
+| Phone app | Telegram | Claude app / browser | Claude app |
+| Runs on the Mac | Menu bar app | CLI, desktop app, or VS Code | Claude desktop app |
+| Rich interface (diffs, live output) | ❌ Text messages | ✅ | ✅ |
 
-- **Any Claude Code login.** API key, Amazon Bedrock, Google Vertex AI, or a company gateway. Steward never touches your Claude credentials; it runs `claude` as it is already signed in.
-- **New sessions from your phone.** Start a session or switch projects without going back to the Mac.
-- **Direct shell commands.** `!git status` runs as-is, without going through Claude.
-- **Telegram as the client.** No terminal or desktop app to keep open.
+Steward never touches your Claude credentials; it runs `claude` as it is already signed in.
+
+Compared as of September 2026.
 
 ## Requirements
 

@@ -20,14 +20,21 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 
 安全、プライバシー、セットアップ、使い方、制限事項の詳細は [Safety & Privacy ページ](privacy.ja.html) をご覧ください。
 
-## Steward と Remote Control
+## Steward と Remote Control、Dispatch の比較
 
-claude.ai のサブスクリプションなら、公式の [Remote Control](https://code.claude.com/docs/en/remote-control) と [Dispatch](https://claude.com/docs/cowork/guide/dispatch) が手軽です。次の用途には Steward が向いています。
+| | Steward | [Remote Control](https://code.claude.com/docs/en/remote-control) | [Dispatch](https://claude.com/docs/cowork/guide/dispatch) |
+|---|---|---|---|
+| Claude Code のログイン方法 | **問わない**：サブスクリプション、API キー、Bedrock、Vertex AI、社内ゲートウェイ | claude.ai サブスクリプションのみ | Pro / Max のみ |
+| スマートフォンから新規セッション | ✅ | ❌ Mac で開いたセッションの続きのみ | ✅ |
+| スマートフォンからプロジェクト切り替え | ✅ `/project` | ❌ | ✅ |
+| シェルコマンドを直接実行 | ✅ `!git status` | Claude 経由 | Claude 経由 |
+| スマートフォン側 | Telegram | Claude アプリ / ブラウザ | Claude アプリ |
+| Mac 側で動くもの | メニューバーアプリ | CLI、デスクトップアプリ、VS Code | Claude デスクトップアプリ |
+| フル機能の画面（diff、リアルタイム出力） | ❌ テキストメッセージのみ | ✅ | ✅ |
 
-- **ログイン方法を問わない**：API キー、Amazon Bedrock、Google Vertex AI、社内ゲートウェイに対応。Claude の認証情報には触れず、`claude` の既存のログインをそのまま使います。
-- **スマートフォンから新規セッション**：Mac に戻らずに、セッションの開始やプロジェクトの切り替えができます。
-- **シェルコマンドを直接実行**：`!git status` は Claude を介さず、そのまま実行されます。
-- **Telegram で操作**：ターミナルやデスクトップアプリを開いたままにする必要はありません。
+Steward は Claude の認証情報に触れず、`claude` の既存のログインをそのまま使います。
+
+2026 年 9 月時点の公式ドキュメントに基づく比較です。
 
 ## 必要なもの
 
