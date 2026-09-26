@@ -30,7 +30,6 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 | シェルコマンドを直接実行 | ✅ `!git status` | Claude 経由 | Claude 経由 |
 | スマートフォン側 | Telegram | Claude アプリ / ブラウザ | Claude アプリ |
 | Mac 側で動くもの | メニューバーアプリ | CLI、デスクトップアプリ、VS Code | Claude デスクトップアプリ |
-| フル機能の画面（diff、リアルタイム出力） | ❌ テキストメッセージのみ | ✅ | ✅ |
 
 Steward は Claude の認証情報に触れず、`claude` の既存のログインをそのまま使います。
 

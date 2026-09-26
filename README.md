@@ -30,7 +30,6 @@ Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Pr
 | Run shell commands directly | ✅ `!git status` | Through Claude | Through Claude |
 | Phone app | Telegram | Claude app / browser | Claude app |
 | Runs on the Mac | Menu bar app | CLI, desktop app, or VS Code | Claude desktop app |
-| Rich interface (diffs, live output) | ❌ Text messages | ✅ | ✅ |
 
 Steward never touches your Claude credentials; it runs `claude` as it is already signed in.
 

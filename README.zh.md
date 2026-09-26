@@ -30,7 +30,6 @@ Steward 不在 macOS 沙箱内运行，并以你的用户身份行动。只应�
 | 直接执行 shell 命令 | ✅ `!git status` | 需经 Claude | 需经 Claude |
 | 手机端 | Telegram | Claude app / 浏览器 | Claude app |
 | Mac 上运行 | 菜单栏 app | CLI、桌面 app 或 VS Code | Claude 桌面 app |
-| 完整界面（diff、实时输出） | ❌ 纯文本消息 | ✅ | ✅ |
 
 Steward 不接触 Claude 的登录凭据，直接沿用 `claude` 现有的登录。
 
