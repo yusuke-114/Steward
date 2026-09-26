@@ -32,13 +32,27 @@ Steward は macOS サンドボックス外で、あなたのユーザー権限�
 brew install --cask yusuke-114/tap/steward
 ```
 
-アンインストール:
+最新版へのアップデート:
+
+```bash
+brew upgrade --cask steward
+```
+
+アンインストール（アプリをゴミ箱にドラッグせず、このコマンドを使ってください）:
 
 ```bash
 brew uninstall --cask steward
 ```
 
 または [Releases](../../releases) から ZIP をダウンロードしてください。
+
+### インストール時に `App source '/Applications/Steward.app' is not there` と表示される
+
+Steward をゴミ箱にドラッグして削除したため、Homebrew がまだインストール済みと認識しています。次のコマンドで再インストールできます。設定はそのまま残ります:
+
+```bash
+brew uninstall --cask --force steward && brew install --cask yusuke-114/tap/steward
+```
 
 ## クイックセットアップ
 

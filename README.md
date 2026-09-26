@@ -32,13 +32,27 @@ Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Pr
 brew install --cask yusuke-114/tap/steward
 ```
 
-To uninstall:
+To upgrade to the latest version:
+
+```bash
+brew upgrade --cask steward
+```
+
+To uninstall (use this instead of dragging the app to the Trash):
 
 ```bash
 brew uninstall --cask steward
 ```
 
 Or download the ZIP from [Releases](../../releases).
+
+### Install fails with `App source '/Applications/Steward.app' is not there`
+
+Steward was removed by dragging it to the Trash, so Homebrew still thinks it is installed. Run this to reinstall; your settings are kept:
+
+```bash
+brew uninstall --cask --force steward && brew install --cask yusuke-114/tap/steward
+```
 
 ## Quick Setup
 

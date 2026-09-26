@@ -32,13 +32,27 @@ Steward 不在 macOS 沙箱内运行，并以你的用户身份行动。只应�
 brew install --cask yusuke-114/tap/steward
 ```
 
-卸载：
+升级到最新版：
+
+```bash
+brew upgrade --cask steward
+```
+
+卸载（请用这条命令，不要直接把 app 拖进废纸篓）：
 
 ```bash
 brew uninstall --cask steward
 ```
 
 或从 [Releases](../../releases) 下载 ZIP。
+
+### 安装失败：`App source '/Applications/Steward.app' is not there`
+
+说明之前是直接把 Steward 拖进了废纸篓，Homebrew 还以为它装着。运行下面这条命令即可重新安装，你的设置会保留：
+
+```bash
+brew uninstall --cask --force steward && brew install --cask yusuke-114/tap/steward
+```
 
 ## 快速配置
 
