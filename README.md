@@ -24,10 +24,12 @@ Full safety, privacy, setup, usage, and limitation notes are on the [Safety & Pr
 
 | | Steward | [Remote Control](https://code.claude.com/docs/en/remote-control) | [Dispatch](https://claude.com/docs/cowork/guide/dispatch) |
 |---|---|---|---|
-| Any Claude Code login (API key, Bedrock, Vertex AI, company gateway) | ✅ | ❌ claude.ai subscription only | ❌ Pro / Max only |
-| Start a new session from your phone | ✅ | ❌ Continues a session opened on the Mac | ✅ |
-| Switch projects from your phone | ✅ `/project` | ❌ | ✅ |
-| Run shell commands directly | ✅ `!git status` | ❌ Through Claude | ❌ Through Claude |
+| claude.ai subscription (Pro / Max) | ✅ | ✅ | ✅ |
+| API key | ✅ | ❌ | ❌ |
+| Bedrock / Vertex AI | ✅ | ❌ | ❌ |
+| Company gateway | ✅ | ❌ | ❌ |
+| Start a new session from your phone | ✅ | ❌ | ✅ |
+| Switch projects from your phone | ✅ | ❌ | ✅ |
 
 Steward never touches your Claude credentials; it runs `claude` as it is already signed in.
 
