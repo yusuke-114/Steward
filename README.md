@@ -1,6 +1,6 @@
 **English** · [简体中文](README.zh.md) · [日本語](README.ja.md)
 
-<p align="center">
+<p>
   <img src="docs/assets/steward-icon.png" alt="Steward icon" width="96">
 </p>
 
