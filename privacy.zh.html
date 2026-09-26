@@ -173,7 +173,7 @@
 
   <h1>安全与隐私</h1>
   <p class="tagline">从手机上的 Telegram 操作你 Mac 上的 Claude Code</p>
-  <p class="updated">最后更新：2026-09-23</p>
+  <p class="updated">最后更新：2026-09-26</p>
 
   <div class="lede">
     <div class="lede-title">Steward 不收集任何数据</div>
@@ -204,7 +204,8 @@
     <div class="warn-title">关于 bot token 的一点提醒</div>
     <p>当前版本把它以明文形式存在你的用户偏好设置里，可由你的 macOS 账号读取，内容未加密。
        这个 token 等同于你 Mac 的远程 shell 访问权限，请像对待密码一样对待它。怀疑泄漏时，去
-       <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 用 <code>/revoke</code> 作废并重新签发。</p>
+       <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 用 <code>/revoke</code> 作废并重新签发。
+       Steward 在 Logs 栏和错误信息里显示的内容都会去掉 token。</p>
   </div>
 
   <h2>会离开你 Mac 的东西</h2>
@@ -242,8 +243,9 @@
     <li>从 <a href="https://t.me/botfather" rel="noopener">@BotFather</a> 获取的 Telegram bot token</li>
     <li>从 <a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a> 获取的数字 Telegram user ID</li>
   </ul>
-  <p>可以用 <code>brew install --cask steward</code> 安装，或从项目 releases 下载 DMG。打开 Steward，填入
-     token 和 user ID，添加项目目录，点击 <strong>Connect</strong>，然后从 Telegram 发送 <code>/status</code> 验证。</p>
+  <p>可以用 <code>brew install --cask yusuke-114/tap/steward</code> 安装，或从项目 releases 下载 ZIP。打开 Steward，填入
+     token 和 user ID 后点击 <strong>Save</strong>，Steward 会先向 Telegram 验证 token 再保存。添加项目目录，
+     点击 <strong>Connect</strong>，然后从 Telegram 发送 <code>/status</code> 验证。</p>
   <p>Steward 会先通过你的交互式 zsh 查找 <code>claude</code>，再回退到 <code>~/.local/bin</code>、
      <code>/opt/homebrew/bin</code> 和 <code>/usr/local/bin</code>。如果仍然找不到，可以在设置里手动指定路径。</p>
 
@@ -279,7 +281,8 @@
         <tr><td>找不到 Claude Code</td><td>安装它，或把 <code>which claude</code> 的输出填到设置里</td></tr>
         <tr><td>无法验证开发者</td><td>打开系统设置，进入隐私与安全性，然后选择仍要打开</td></tr>
         <tr><td>bot 没反应</td><td>查看 Logs 栏，里面有消息、路由、权限请求和退出码</td></tr>
-        <tr><td>Token 无效</td><td>Steward 会停止轮询并显示 token 无效；去 BotFather 确认 token</td></tr>
+        <tr><td>Token 无效</td><td>点击 Save 时会被拒绝，之前保存的 token 保持不变。已保存的 token 失效时，Steward 会停止轮询并显示 token 无效；去 BotFather 确认 token</td></tr>
+        <tr><td>“Telegram is in use elsewhere”</td><td>另一个程序、另一台 Mac 或 webhook 正在使用同一个 bot。停掉它（或删除 webhook）后，再点击 Connect</td></tr>
       </tbody>
     </table>
   </div>
@@ -301,7 +304,7 @@
   </ul>
 
   <h2>政策变更</h2>
-  <p>如果将来版本改变了数据处理方式（例如把 token 迁移到钥匙串、或增加可选的日志落盘），
+  <p>如果将来版本改变了数据处理方式（例如增加可选的日志落盘），
      本页会同步更新，并在发行说明中注明。</p>
 
   <footer>

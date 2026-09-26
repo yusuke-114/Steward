@@ -172,7 +172,7 @@
 
   <h1>Safety & Privacy</h1>
   <p class="tagline">スマホの Telegram から、Mac 上の Claude Code を動かす</p>
-  <p class="updated">最終更新：2026-09-23</p>
+  <p class="updated">最終更新：2026-09-26</p>
 
   <div class="lede">
     <div class="lede-title">Steward は何も収集しません</div>
@@ -205,7 +205,8 @@
     <p>現バージョンではユーザー環境設定に平文で保存され、あなたの macOS アカウントから読み取れますが、
        暗号化はされていません。この token はあなたの Mac へのリモート shell アクセスと同等です。
        パスワードと同じ扱いをしてください。漏洩が疑われる場合は
-       <a href="https://t.me/botfather" rel="noopener">@BotFather</a> で <code>/revoke</code> して再発行します。</p>
+       <a href="https://t.me/botfather" rel="noopener">@BotFather</a> で <code>/revoke</code> して再発行します。
+       Logs タブやエラーメッセージに表示される内容から、Steward は token を取り除きます。</p>
   </div>
 
   <h2>Mac の外に出るもの</h2>
@@ -244,8 +245,9 @@
     <li><a href="https://t.me/botfather" rel="noopener">@BotFather</a> で取得した Telegram bot token</li>
     <li><a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a> で取得した数値 Telegram ユーザー ID</li>
   </ul>
-  <p><code>brew install --cask steward</code> でインストールするか、プロジェクトの releases から DMG をダウンロードします。
-     Steward を開き、token とユーザー ID を入力し、プロジェクトフォルダを追加して <strong>Connect</strong> を押します。
+  <p><code>brew install --cask yusuke-114/tap/steward</code> でインストールするか、プロジェクトの releases から ZIP をダウンロードします。
+     Steward を開き、token とユーザー ID を入力して <strong>Save</strong> を押します。Steward は保存前に Telegram で token を確認します。
+     プロジェクトフォルダを追加して <strong>Connect</strong> を押します。
      その後 Telegram から <code>/status</code> を送って確認してください。</p>
   <p>Steward はまず対話型 zsh で <code>claude</code> を探し、その後 <code>~/.local/bin</code>、
      <code>/opt/homebrew/bin</code>、<code>/usr/local/bin</code> にフォールバックします。それでも見つからない場合は
@@ -287,7 +289,8 @@
         <tr><td>Claude Code が見つからない</td><td>インストールするか、<code>which claude</code> の結果を Settings に入力</td></tr>
         <tr><td>開発元を確認できない</td><td>システム設定のプライバシーとセキュリティから、このまま開くを選択</td></tr>
         <tr><td>bot が反応しない</td><td>Logs タブでメッセージ、ルーティング、承認リクエスト、終了コードを確認</td></tr>
-        <tr><td>token が無効</td><td>Steward はポーリングを停止し、token 無効の状態を表示します。BotFather で確認してください</td></tr>
+        <tr><td>token が無効</td><td>Save 時に拒否され、以前に保存した token はそのまま残ります。保存済みの token が無効になった場合、Steward はポーリングを停止し、token 無効の状態を表示します。BotFather で確認してください</td></tr>
+        <tr><td>「Telegram is in use elsewhere」</td><td>別のプログラム、別の Mac、または webhook が同じ bot を使っています。それを止めてから（または webhook を削除してから）、もう一度 Connect を押してください</td></tr>
       </tbody>
     </table>
   </div>
@@ -311,7 +314,7 @@
   </ul>
 
   <h2>ポリシーの変更</h2>
-  <p>将来のバージョンでデータの扱いが変わった場合（token をキーチェーンに移す、任意のログ出力を追加するなど）、
+  <p>将来のバージョンでデータの扱いが変わった場合（任意のログ出力を追加するなど）、
      このページを更新し、リリースノートに明記します。</p>
 
   <footer>

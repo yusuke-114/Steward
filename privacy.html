@@ -172,7 +172,7 @@
 
   <h1>Safety & Privacy</h1>
   <p class="tagline">Drive Claude Code on your Mac from Telegram on your phone</p>
-  <p class="updated">Last updated: 2026-09-23</p>
+  <p class="updated">Last updated: 2026-09-26</p>
 
   <div class="lede">
     <div class="lede-title">Steward collects nothing</div>
@@ -205,7 +205,8 @@
     <p>This version stores it in plain text in your user preferences, readable by your macOS
        account but not encrypted. That token is equivalent to remote shell access to your
        Mac — treat it like a password. If you suspect it leaked, revoke and reissue it with
-       <code>/revoke</code> at <a href="https://t.me/botfather" rel="noopener">@BotFather</a>.</p>
+       <code>/revoke</code> at <a href="https://t.me/botfather" rel="noopener">@BotFather</a>.
+       Steward removes the token from anything it shows in the Logs tab or in error messages.</p>
   </div>
 
   <h2>What leaves your Mac</h2>
@@ -249,8 +250,9 @@
     <li>A Telegram bot token from <a href="https://t.me/botfather" rel="noopener">@BotFather</a></li>
     <li>Your numeric Telegram user ID from <a href="https://t.me/userinfobot" rel="noopener">@userinfobot</a></li>
   </ul>
-  <p>Install with <code>brew install --cask steward</code> or download the DMG from the project
-     releases. Open Steward, paste the token and user ID, add a project folder, press
+  <p>Install with <code>brew install --cask yusuke-114/tap/steward</code> or download the ZIP from the project
+     releases. Open Steward, paste the token and user ID, and press <strong>Save</strong>: Steward checks
+     the token with Telegram before saving it. Add a project folder, press
      <strong>Connect</strong>, then send <code>/status</code> from Telegram.</p>
   <p>Steward first asks your interactive zsh for <code>claude</code>, then falls back to
      <code>~/.local/bin</code>, <code>/opt/homebrew/bin</code> and <code>/usr/local/bin</code>.
@@ -292,7 +294,8 @@
         <tr><td>Claude Code not found</td><td>Install it, or paste the output of <code>which claude</code> into Settings</td></tr>
         <tr><td>Developer cannot be verified</td><td>Open System Settings, Privacy & Security, then choose Open Anyway</td></tr>
         <tr><td>No response from the bot</td><td>Check the Logs tab for messages, routes, approvals and exit codes</td></tr>
-        <tr><td>Invalid token</td><td>Steward stops polling and shows the invalid-token status; verify it with BotFather</td></tr>
+        <tr><td>Invalid token</td><td>Save rejects it and keeps the previously saved token. If a saved token stops working, Steward stops polling and shows the invalid-token status; verify it with BotFather</td></tr>
+        <tr><td>“Telegram is in use elsewhere”</td><td>Another program, another Mac, or a webhook is using the same bot. Stop it (or delete the webhook), then press Connect again</td></tr>
       </tbody>
     </table>
   </div>
@@ -318,8 +321,8 @@
   </ul>
 
   <h2>Changes to this policy</h2>
-  <p>If a future version changes how data is handled (moving the token to the Keychain, say, or adding
-     optional log files), this page will be updated and the change noted in the release notes.</p>
+  <p>If a future version changes how data is handled (adding
+     optional log files, say), this page will be updated and the change noted in the release notes.</p>
 
   <footer>
     These claims describe the current app implementation and distribution notes: Steward has no analytics, telemetry,
