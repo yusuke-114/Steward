@@ -38,7 +38,7 @@ import Foundation
     /// 日志视图不能显示 bot token，即使调用方直接插值了带 URL 的错误。
     @Test func tokensAreRedactedBeforeStorage() async {
         let store = await LogStore()
-        await store.warn("telegram poll failed: https://api.telegram.org/bot123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw/getUpdates")
+        await store.warn("telegram poll failed: https://api.telegram.org/bot123456789:TEST-ONLY-not-a-real-token-0000/getUpdates")
 
         let entries = await store.entries
         #expect(entries.map(\.message) == ["telegram poll failed: https://api.telegram.org/bot<redacted>/getUpdates"])
