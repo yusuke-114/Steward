@@ -1,0 +1,4 @@
+{"type":"system","subtype":"init","session_id":"fixture-basic-session"}
+{"type":"assistant","message":{"content":[{"type":"text","text":"Hello from the fixture."}]}}
+{"type":"rate_limit_event","payload":{}}
+{"type":"result","result":"Hello from the fixture.","is_error":false}

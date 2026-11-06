@@ -1,0 +1,5 @@
+{"type":"system","subtype":"init","session_id":"fixture-permission-session"}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"fixture-permission-tool-use","name":"Bash"}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"fixture-permission-tool-use","content":"approved fixture output","is_error":false}]}}
+{"type":"assistant","message":{"content":[{"type":"text","text":"Permission flow completed."}]}}
+{"type":"result","result":"Permission flow completed.","is_error":false}
