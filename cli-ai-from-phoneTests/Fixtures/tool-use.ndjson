@@ -1,0 +1,5 @@
+{"type":"system","subtype":"init","session_id":"fixture-tool-session"}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"fixture-tool-use","name":"Bash"}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"fixture-tool-use","content":"fixture output","is_error":false}]}}
+{"type":"assistant","message":{"content":[{"type":"text","text":"Command completed."}]}}
+{"type":"result","result":"Command completed.","is_error":false}

@@ -7,3 +7,12 @@
 *.zip
 *.xcarchive
 *.dSYM
+
+# Xcode user settings and build output
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+
+# Local secrets
+.env
