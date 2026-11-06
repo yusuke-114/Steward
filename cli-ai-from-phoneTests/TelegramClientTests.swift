@@ -51,7 +51,7 @@ import Foundation
 
     /// URLError 的描述会带上完整请求 URL，而 token 就在 URL 路径里。
     @Test func redactingTokenRemovesTokenFromErrorDescriptions() {
-        let token = "123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw"
+        let token = "123456789:TEST-ONLY-not-a-real-token-0000"
         let description = "Error Domain=NSURLErrorDomain Code=-1009 UserInfo={NSErrorFailingURLStringKey="
             + "https://api.telegram.org/bot\(token)/getUpdates?offset=0&timeout=50}"
 
